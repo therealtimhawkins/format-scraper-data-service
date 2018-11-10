@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const ids = require('./src/getRestaurantIds');
+const scraperDataService = require('./src/scraperDataServiceApi');
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });
 
-app.get('/', (req, res) => {
-  ids.getRestaurantIds();
+app.get('/', async (req, res) => {
+  let ids = await scraperDataService.getRestaurantIds();
+  console.log(ids);
   res.send('format-scraper-data-service running...');
 });
