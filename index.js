@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-const ids = require('./src/findRestaurantIds');
+const ids = require('./src/getRestaurantIds');
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
