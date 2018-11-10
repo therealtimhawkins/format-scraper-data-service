@@ -1,7 +1,8 @@
 const axios = require('axios');
+const config = require('config')
 
 getRestaurantIds = async () => {
-  const url = 'http://scraper-data-service.herokuapp.com/api/restaurants/ids';
+  const url = config.get('scraperDataServiceApiUrl');
   const result = await axios.get(url);
   return result;
 };
