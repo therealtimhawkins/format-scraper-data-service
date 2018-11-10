@@ -1,12 +1,19 @@
 const axios = require('axios');
 const config = require('config')
+const url = config.get('scraperDataServiceApiUrl');
 
 getRestaurantIds = async () => {
-  const url = config.get('scraperDataServiceApiUrl');
-  const result = await axios.get(url);
+  console.log(`${url}/ids`);
+  const result = await axios.get(`${url}/ids`);
   return result;
 };
 
+getRestaurantById = async (id) => {
+  const result = await axios.get(`${url}/id/${id}`);
+  return result;
+}
+
 module.exports = {
   getRestaurantIds,
+  getRestaurantById,
 };
