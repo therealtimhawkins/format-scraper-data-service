@@ -9,7 +9,19 @@ describe('dishFormatter', () => {
 
   describe('loopDishes()', () => {
     it('should loop through dishes()', () => {
-
+      const result = dishFormatter.loopDishes(restaurantMock.data.dishes);
+      expect(result[0]).toEqual({ 
+        name: [ 'American', 'Hot' ],
+        description:
+        [ 'Pepperoni,',
+          'jalapeno',
+          'peppers,',
+          'onions',
+          '&',
+          'mixed',
+          'peppers' ],
+        price: '£11.99' 
+      });
     });
   });
 
