@@ -3,7 +3,6 @@ const config = require('config')
 const url = config.get('scraperDataServiceApiUrl');
 
 getRestaurantIds = async () => {
-  console.log(`${url}/ids`);
   const result = await axios.get(`${url}/ids`);
   return result;
 };
