@@ -1,4 +1,4 @@
-const scraperDataService = require('../apiControllers/scraperDataServiceApi')
+const scraperDataService = require('../apiControllers/scraperDataServiceApi');
 const dishFormatter = require('./dishFormatController');
 var progressCounter = 0;
 
@@ -17,14 +17,14 @@ loopIds = async (ids) => {
 };
 
 removeMeatDishes = (restaurantData) => {
-  const data = dishFormatter.run(restaurantData);
-  console.log(data);
+  const restaurent = dishFormatter.run(restaurantData);
+  console.log(restaurent);
 };
 
 progressSetup = (ids) => {
   progressCounter = ids.data.length;
   console.log(`\n${progressCounter} Restaurants have been found!\n`);
-}
+};
 
 progressTracker = () => {
   progressCounter -= 1;

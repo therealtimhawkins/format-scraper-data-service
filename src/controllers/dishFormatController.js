@@ -18,6 +18,10 @@ stringToArray = (string) => {
   return null;
 };
 
+removeMeatDishes = () => {
+  
+}
+
 module.exports = {
   run,
   loopDishes,

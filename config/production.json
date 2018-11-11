@@ -1,0 +1,3 @@
+{
+  "scraperDataServiceApiUrl": "http://scraper-data-service.herokuapp.com/api/restaurants"
+}
