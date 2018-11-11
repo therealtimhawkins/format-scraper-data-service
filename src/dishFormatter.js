@@ -4,14 +4,18 @@ run = (restaurant) => {
 
 loopDishes = (dishes) => {
   dishes.forEach( async (dish) => {
-    nameFieldToArray(dish.name);
+    dish.name = stringToArray(dish.name);
+    dish.description = stringToArray(dish.description);
   });
+  return dishes;
 };
 
-nameFieldToArray = (name) => {
-  const nameArray = name.split(" ");
-  console.log(nameArray);
-  return nameArray;
+stringToArray = (string) => {
+  if (string) {
+    const array = string.split(" ");
+    return array;
+  }
+  return null;
 };
 
 module.exports = {
