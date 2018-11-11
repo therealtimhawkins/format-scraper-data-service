@@ -18,7 +18,6 @@ loopIds = async (ids) => {
 
 removeMeatDishes = (restaurantData) => {
   const restaurent = dishFormatter.run(restaurantData);
-  console.log(restaurent);
 };
 
 progressSetup = (ids) => {
