@@ -1,0 +1,42 @@
+{
+  "data": {
+    "_id": {
+        "$oid": "5be5dd060b3ff00016ec7e2d"
+    },
+    "coords": [
+        1,
+        2
+    ],
+    "dishes": [
+        {
+            "name": "American Hot",
+            "description": "Pepperoni, jalapeno peppers, onions & mixed peppers",
+            "price": "£11.99"
+        },
+        {
+            "name": "Seafood",
+            "description": "Prawns, tuna, anchovies & fresh tomato",
+            "price": "£11.99"
+        },
+        {
+            "name": "Vegetarian",
+            "description": "Onions, mixed peppers, sweetcorn & mushrooms",
+            "price": "£11.99"
+        },
+        {
+            "name": "Vegetarian Classic",
+            "description": "Onions, mushrooms, mixed peppers, sweetcorn & asparagus",
+            "price": "£11.99"
+        },
+        {
+            "name": "Vegetarian Deluxe",
+            "description": "Onions, spinach, fresh tomatoes & black olives",
+            "price": "£11.99"
+        }
+    ],
+    "name": "Marios Pizza",
+    "postcode": "E14 7PG",
+    "rating": 10,
+    "__v": 0
+  }
+}

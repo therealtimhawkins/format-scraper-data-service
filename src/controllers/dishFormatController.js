@@ -1,5 +1,5 @@
 run = (restaurant) => {
-  loopDishes(restaurant.data.dishes);
+  return loopDishes(restaurant.data.dishes);
 };
 
 loopDishes = (dishes) => {
@@ -20,4 +20,6 @@ stringToArray = (string) => {
 
 module.exports = {
   run,
+  loopDishes,
+  stringToArray,
 };
