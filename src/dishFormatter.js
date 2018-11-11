@@ -1,9 +1,17 @@
 run = (restaurant) => {
-  console.log(restaurant.data.dishes.length);
+  loopDishes(restaurant.data.dishes);
 };
 
-loopDishes = () => {
+loopDishes = (dishes) => {
+  dishes.forEach( async (dish) => {
+    nameFieldToArray(dish.name);
+  });
+};
 
+nameFieldToArray = (name) => {
+  const nameArray = name.split(" ");
+  console.log(nameArray);
+  return nameArray;
 };
 
 module.exports = {
