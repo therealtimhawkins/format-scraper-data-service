@@ -1,5 +1,5 @@
-const dishFormatter = require('../src/controllers/dishFormatController');
-const restaurantMock = require('./mocks/restaurantMock');
+const dishFormatter = require('../../src/controllers/dishFormatController');
+const restaurantMock = require('../mocks/restaurantMock');
 
 describe('dishFormatter', () => {
   describe('run()', () => {
