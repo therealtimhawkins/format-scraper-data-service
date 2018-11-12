@@ -5,12 +5,16 @@ const meatProducts = [
   'pepperoni',
   'chicken',
   'chicken,',
+  'lamb,',
+  'lamb',
   'ham,',
   'ham',
   'bacon,',
   'bacon',
   'turkey,',
   'turkey',
+  'ribs,',
+  'ribs',
 ]
 
 
@@ -20,29 +24,24 @@ run = (restaurant) => {
 
 loopDishes = (dishes) => {
   dishes.forEach(dish => {
-    checkDishNameForMeat(dish);
-    checkDishDescriptionForMeat(dish);
+    const index = dishes.indexOf(dish);
+    if (stringContainsMeat(dish.name)) {
+      removeItemFromArray(dishes, index);
+    }
+    if (stringContainsMeat(dish.description)) {
+      removeItemFromArray(dishes, index);
+    }
   });
   return dishes;
 };
 
-checkDishNameForMeat = (dish) => {
-  dish.name = stringToArray(dish.name);
-  if (dish.name) {
-    if (arrayContainsMeatProduct(dish.name)) {
-      console.log(dish.name);
-    };
+stringContainsMeat = (string) => {
+  if (string) {
+    array = stringToArray(string);
+    return arrayContainsMeatProduct(array);
   };
+  return false;
 };
-
-checkDishDescriptionForMeat = (dish) => {
-  dish.description = stringToArray(dish.description);
-  if (dish.description) {
-    if (arrayContainsMeatProduct(dish.description)) {
-      console.log(dish.description);
-    };
-  };
-}
 
 arrayContainsMeatProduct = (array) => {
   const containsMeatProduct = array.some(element => meatProducts.includes(element.toLowerCase()));
@@ -57,8 +56,15 @@ stringToArray = (string) => {
   return null;
 };
 
+removeItemFromArray = (array, index) => {
+  if (index !== -1) array.splice(index, 1);
+  return array;
+};
+
 module.exports = {
   run,
   loopDishes,
+  stringContainsMeat,
   stringToArray,
+  removeItemFromArray,
 };

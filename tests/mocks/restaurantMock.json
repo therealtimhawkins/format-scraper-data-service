@@ -14,13 +14,13 @@
             "price": "£11.99"
         },
         {
-            "name": "Seafood",
-            "description": "Prawns, tuna, anchovies & fresh tomato",
-            "price": "£11.99"
+          "name": "Vegetarian Deluxe",
+          "description": "Onions, spinach, fresh tomatoes & black olives",
+          "price": "£11.99"
         },
         {
-            "name": "Vegetarian Deluxe",
-            "description": "Onions, spinach, fresh tomatoes & black olives",
+            "name": "Seafood",
+            "description": "Prawns, tuna, anchovies & fresh tomato",
             "price": "£11.99"
         }
     ],
