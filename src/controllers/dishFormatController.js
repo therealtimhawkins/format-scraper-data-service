@@ -15,24 +15,25 @@ const meatProducts = [
   'turkey',
   'ribs,',
   'ribs',
+  'pork,',
+  'pork'
 ]
-
 
 run = (restaurant) => {
   return loopDishes(restaurant.data.dishes);
 };
 
 loopDishes = (dishes) => {
+  var meatFreeDishes = []
   dishes.forEach(dish => {
-    const index = dishes.indexOf(dish);
-    if (stringContainsMeat(dish.name)) {
-      removeItemFromArray(dishes, index);
-    }
-    if (stringContainsMeat(dish.description)) {
-      removeItemFromArray(dishes, index);
+    if (stringContainsVeganKeyword(dish.description) || stringContainsVeganKeyword(dish.name)) {
+      dish.vegan = true;
+      meatFreeDishes.push(dish);
+    } else if (!stringContainsMeat(dish.description) && !stringContainsMeat(dish.name)) {
+      meatFreeDishes.push(dish);
     }
   });
-  return dishes;
+  return meatFreeDishes;
 };
 
 stringContainsMeat = (string) => {
@@ -43,9 +44,22 @@ stringContainsMeat = (string) => {
   return false;
 };
 
+stringContainsVeganKeyword = (string) => {
+  if (string) {
+    array = stringToArray(string);
+    return arrayContainsVeganKeyword(array);
+  };
+  return false;
+}
+
 arrayContainsMeatProduct = (array) => {
   const containsMeatProduct = array.some(element => meatProducts.includes(element.toLowerCase()));
   return containsMeatProduct;
+};
+
+arrayContainsVeganKeyword = (array) => {
+  const containsVeganKeyword = array.some(element => ['vegan'].includes(element.toLowerCase()));
+  return containsVeganKeyword;
 };
 
 stringToArray = (string) => {
@@ -56,15 +70,10 @@ stringToArray = (string) => {
   return null;
 };
 
-removeItemFromArray = (array, index) => {
-  if (index !== -1) array.splice(index, 1);
-  return array;
-};
-
 module.exports = {
   run,
   loopDishes,
   stringContainsMeat,
+  stringContainsVeganKeyword,
   stringToArray,
-  removeItemFromArray,
 };

@@ -1,36 +1,44 @@
 const scraperDataService = require('../apiControllers/scraperDataServiceApi');
+const restaurantDataService = require('../apiControllers/restaurantDataServiceApi');
 const dishFormatter = require('./dishFormatController');
-var progressCounter = 0;
 
 run = async () => {
   const ids = await scraperDataService.getRestaurantIds();
-  progressSetup(ids);
-  loopIds(ids);
+  var progressCounter = progressSetup(ids.data);
+  loopIds(ids, progressCounter);
 };
 
-loopIds = async (ids) => {
+loopIds = async (ids, progressCounter) => {
   ids.data.forEach( async (id) => {
-    const result = await scraperDataService.getRestaurantById(id);
-    removeMeatDishes(result);
-    progressTracker();
+    const scraperApiResult = await scraperDataService.getRestaurantById(id);
+    const meatFreeDishes = removeMeatDishes(scraperApiResult);
+    scraperApiResult.data.dishes = meatFreeDishes;
+    progressCounter = progressTracker(progressCounter);
+    const restaurantApiResult = await restaurantDataService.postMeatFreeRestaurant(scraperApiResult.data);
+    console.log(restaurantApiResult);
   });
 };
 
 removeMeatDishes = (restaurantData) => {
-  const restaurent = dishFormatter.run(restaurantData);
-  console.log(restaurent);
+  const restaurant = dishFormatter.run(restaurantData);
+  return restaurant;
 };
 
 progressSetup = (ids) => {
-  progressCounter = ids.data.length;
+  progressCounter = ids.length;
   console.log(`\n${progressCounter} Restaurants have been found!\n`);
+  return progressCounter;
 };
 
-progressTracker = () => {
+progressTracker = (progressCounter) => {
   progressCounter -= 1;
   console.log(`${progressCounter} restaurents left to format!`);
+  return progressCounter;
 };
 
 module.exports = {
   run,
+  removeMeatDishes,
+  progressSetup,
+  progressTracker,
 };

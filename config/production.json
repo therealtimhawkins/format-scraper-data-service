@@ -1,3 +1,4 @@
 {
-  "scraperDataServiceApiUrl": "http://scraper-data-service.herokuapp.com/api/restaurants"
+  "scraperDataServiceApiUrl": "http://scraper-data-service.herokuapp.com/api/restaurants",
+  "restaurantDataServiceApiUrl": "http://restaurant-data-service.herokuapp.com/api/restaurants"
 }

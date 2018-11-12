@@ -38,6 +38,16 @@ describe('dishFormatter', () => {
     });
   });
 
+  describe('stringContainsVeganKeyword()', () => {
+    it('should return true if a string contains vegan', () => {
+      expect(dishFormatter.stringContainsVeganKeyword('vegan')).toEqual(true);
+    });
+
+    it('should return true if a string contains Vegan', () => {
+      expect(dishFormatter.stringContainsVeganKeyword('Vegan')).toEqual(true);
+    });
+  });
+
   describe('stringToArray()', () => {
     it('should convert given string to array()', () => {
       const expected = ['Testing', 'String', 'To', 'Array'];
@@ -49,13 +59,6 @@ describe('dishFormatter', () => {
       const expected = null;
       const actual = dishFormatter.stringToArray(null);
       expect(expected).toEqual(actual);
-    });
-  });
-
-  describe('removeItemFromArray()', () => {
-    it('should remove a single item from array with a given index', () => {
-      const array = ['one', 'two', 'three', 'four'];
-      expect(dishFormatter.removeItemFromArray(array, 2)).toEqual(['one', 'two', 'four'])
     });
   });
 });
